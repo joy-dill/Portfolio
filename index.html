@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Joey Dillenseger</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --c1: #FF5733;
+      --c2: #FFBD33;
+      --c3: #3380FF;
+      --c4: #33FFB8;
+      --c5: #B833FF;
+      --dark:  #0C0C14;
+      --dark2: #13131E;
+      --dark3: #1A1A28;
+      --dark4: #222235;
+      --text:  #F0EEF8;
+      --muted: #8A88A8;
+      --border: rgba(255,255,255,0.07);
+      --nav-w: 260px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      display: flex;
+    }
+
+    /* ══════════════════════════════
+       SIDEBAR NAV
+    ══════════════════════════════ */
+    aside {
+      width: var(--nav-w);
+      min-height: 100vh;
+      background: var(--dark2);
+      border-right: 1px solid var(--border);
+      position: fixed; top: 0; left: 0;
+      display: flex; flex-direction: column;
+      padding: 2.5rem 1.8rem;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      margin-bottom: 2.5rem;
+    }
+    .nav-brand .tag {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--c1);
+      display: block; margin-bottom: 0.4rem;
+    }
+    .nav-brand h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+    /* ── Modifie le nom ici ── */
+    .nav-brand h2::after { content: ""; }
+
+    nav ul { list-style: none; flex: 1; }
+    nav ul li { margin-bottom: 0.2rem; }
+    nav ul li a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 0.6rem 0.9rem; border-radius: 10px;
+      color: var(--muted); text-decoration: none;
+      font-size: 0.88rem; font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+    }
+    nav ul li a .nav-num {
+      font-size: 0.65rem; color: var(--c1);
+      font-weight: 700; letter-spacing: 0.08em;
+      min-width: 22px;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: rgba(255,87,51,0.1);
+      color: var(--text);
+    }
+    nav ul li a.active .nav-num { color: var(--c2); }
+
+    .nav-footer {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem; color: var(--muted);
+    }
+    .nav-footer span {
+      display: block; font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--c3), var(--c4));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ══════════════════════════════
+       MAIN CONTENT
+    ══════════════════════════════ */
+    main {
+      margin-left: var(--nav-w);
+      flex: 1;
+      min-height: 100vh;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 5rem 4.5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .sec-num {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--c1); margin-bottom: 0.5rem;
+      display: block;
+    }
+    .sec-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .sec-title span {
+      background: linear-gradient(90deg, var(--c1), var(--c2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* ══════════════════════════════
+       01 — HERO
+    ══════════════════════════════ */
+    #hero {
+      display: flex; align-items: center;
+      background:
+        radial-gradient(ellipse 55% 55% at 85% 15%, rgba(51,128,255,0.15) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 45% at 15% 85%, rgba(255,87,51,0.13) 0%, transparent 65%);
+      overflow: hidden;
+    }
+
+    .hero-content { max-width: 680px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.35rem 1rem; border-radius: 100px;
+      font-size: 0.78rem; color: var(--muted);
+      margin-bottom: 1.8rem;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--c4);
+      box-shadow: 0 0 8px var(--c4);
+      animation: blink 2s ease infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800; line-height: 1.05;
+      margin-bottom: 0.6rem;
+    }
+    .hero-name .grad {
+      background: linear-gradient(90deg, var(--c1) 0%, var(--c2) 50%, var(--c3) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; color: var(--muted);
+      font-weight: 600; margin-bottom: 1.5rem;
+      letter-spacing: 0.04em;
+    }
+    .hero-desc {
+      font-size: 1.05rem; line-height: 1.8;
+      color: var(--muted); max-width: 540px; margin-bottom: 2.5rem;
+    }
+
+    .hero-chips {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+    .chip {
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px; font-size: 0.8rem;
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 0.8rem 1.8rem;
+      border-radius: 100px; font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer; border: none;
+    }
+    .btn-grad {
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(255,87,51,0.3);
+    }
+    .btn-grad:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,87,51,0.5); }
+    .btn-ghost {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.18);
+      color: var(--text);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
+
+    /* Blobs déco */
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); pointer-events: none;
+      animation: float 9s ease-in-out infinite;
+    }
+    .blob1 { width:320px;height:320px;background:var(--c1);opacity:0.08;top:-60px;right:-60px;animation-delay:0s; }
+    .blob2 { width:280px;height:280px;background:var(--c3);opacity:0.09;bottom:40px;right:120px;animation-delay:-4s; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-28px)} }
+
+    /* ══════════════════════════════
+       02 — À PROPOS
+    ══════════════════════════════ */
+    #apropos { background: var(--dark2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .about-photo {
+      width: 240px; height: 300px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--dark4), var(--dark3));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      overflow: hidden; position: relative;
+    }
+    /* ── Remplace l'emoji par une vraie photo :
+       <img src="ta-photo.jpg" style="width:100%;height:100%;object-fit:cover"> ── */
+    .about-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(255,87,51,0.15), transparent 50%);
+    }
+
+    .about-text h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;
+    }
+    .about-text p {
+      color: var(--muted); line-height: 1.85; margin-bottom: 1rem; font-size: 0.98rem;
+    }
+    .about-tags {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0;
+    }
+    .about-tag {
+      display: flex; align-items: center; gap: 6px;
+      padding: 0.5rem 1rem; border-radius: 12px;
+      background: var(--dark3); border: 1px solid var(--border);
+      font-size: 0.85rem; color: var(--text);
+    }
+
+    /* ══════════════════════════════
+       03 — PARCOURS SCOLAIRE
+    ══════════════════════════════ */
+    #scolaire { background: var(--dark); }
+
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--c1), var(--c3), var(--c4));
+      border-radius: 2px;
+    }
+
+    .tl-item {
+      position: relative; margin-bottom: 3rem;
+      padding-left: 1.5rem;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute; left: -2rem; top: 8px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--c1);
+      border: 2px solid var(--dark);
+      box-shadow: 0 0 10px rgba(255,87,51,0.5);
+    }
+    .tl-date {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      color: var(--c2); margin-bottom: 0.4rem; text-transform: uppercase;
+    }
+    .tl-card {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .tl-card:hover { border-color: rgba(255,87,51,0.3); transform: translateX(4px); }
+    .tl-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 0.2rem;
+    }
+    .tl-card .school {
+      font-size: 0.85rem; color: var(--c3); margin-bottom: 0.8rem; font-weight: 500;
+    }
+    .tl-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag-item {
+      padding: 0.2rem 0.7rem; border-radius: 100px;
+      font-size: 0.75rem; background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border); color: var(--muted);
+    }
+
+    /* ══════════════════════════════
+       04 — EXPÉRIENCES
+    ══════════════════════════════ */
+    #professionnel { background: var(--dark2); }
+
+    .exp-cv-btns {
+      display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;
+    }
+    .btn-cv {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.7rem 1.4rem; border-radius: 12px;
+      font-size: 0.85rem; font-weight: 600; text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .btn-cv:hover { transform: translateY(-2px); }
+    .btn-cv-view {
+      background: rgba(51,128,255,0.15);
+      border: 1px solid rgba(51,128,255,0.3);
+      color: var(--c3);
+    }
+    .btn-cv-dl {
+      background: rgba(255,87,51,0.15);
+      border: 1px solid rgba(255,87,51,0.3);
+      color: var(--c1);
+    }
+
+    /* ══════════════════════════════
+       05 — CERTIFICATIONS
+    ══════════════════════════════ */
+    #certifications { background: var(--dark); }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.2rem;
+    }
+    .cert-card {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+      transition: transform 0.22s, border-color 0.22s;
+      position: relative; overflow: hidden;
+    }
+    .cert-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .cert-card.c-orange::before { background: linear-gradient(90deg, var(--c1), var(--c2)); }
+    .cert-card.c-blue::before   { background: linear-gradient(90deg, var(--c3), var(--c4)); }
+    .cert-card.c-purple::before { background: linear-gradient(90deg, var(--c5), var(--c3)); }
+    .cert-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.15); }
+    .cert-year {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--c2); margin-bottom: 0.5rem;
+    }
+    .cert-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;
+    }
+    .cert-progress {
+      font-size: 0.82rem; color: var(--c4); font-weight: 600; margin-bottom: 0.8rem;
+    }
+    .cert-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+
+    /* ══════════════════════════════
+       06 — VEILLE TECHNO
+    ══════════════════════════════ */
+    #veille { background: var(--dark2); }
+
+    .veille-card {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem;
+      max-width: 700px;
+      position: relative; overflow: hidden;
+    }
+    .veille-card::after {
+      content: '';
+      position: absolute; bottom: -40px; right: -40px;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--c3), var(--c4));
+      opacity: 0.07; filter: blur(30px);
+    }
+    .veille-theme {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--c3);
+      background: rgba(51,128,255,0.1);
+      border: 1px solid rgba(51,128,255,0.25);
+      padding: 0.3rem 0.8rem; border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+    .veille-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem;
+    }
+    .veille-card p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
+    .veille-sources {
+      font-size: 0.85rem; color: var(--c4);
+      background: rgba(51,255,184,0.07);
+      border: 1px solid rgba(51,255,184,0.2);
+      padding: 0.7rem 1rem; border-radius: 10px;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ══════════════════════════════
+       07 — CONTACT
+    ══════════════════════════════ */
+    #contact { background: var(--dark); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem; font-weight: 700; margin-bottom: 0.8rem;
+    }
+    .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.95rem; }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 12px;
+      padding: 0.9rem 1.2rem; border-radius: 14px;
+      background: var(--dark3); border: 1px solid var(--border);
+      text-decoration: none; color: var(--text);
+      font-size: 0.9rem; font-weight: 500;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .contact-link:hover { border-color: rgba(255,87,51,0.4); transform: translateX(4px); }
+    .contact-link .ico {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .ico-mail   { background: rgba(255,87,51,0.15); }
+    .ico-li     { background: rgba(51,128,255,0.15); }
+    .ico-gh     { background: rgba(184,51,255,0.15); }
+    .ico-phone  { background: rgba(51,255,184,0.15); }
+
+    .contact-form-wrap {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem;
+    }
+    .contact-form-wrap h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem;
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; font-size: 0.78rem; font-weight: 600;
+      color: var(--muted); margin-bottom: 0.4rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px; padding: 0.8rem 1rem;
+      color: var(--text); font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem; outline: none; resize: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--c1); }
+    .form-group textarea { min-height: 110px; }
+    .btn-send {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      color: #fff; font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      border: none; border-radius: 12px; cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .btn-send:hover { opacity: 0.88; transform: scale(0.99); }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      margin-left: 0;
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 4.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.82rem; color: var(--muted);
+      flex-wrap: wrap; gap: 0.8rem;
+    }
+    footer .footer-brand {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      background: linear-gradient(90deg, var(--c1), var(--c2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* ══════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════ */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════════
+       RESPONSIVE MOBILE
+    ══════════════════════════════ */
+    .hamburger {
+      display: none;
+      position: fixed; top: 1rem; left: 1rem; z-index: 200;
+      background: var(--dark3); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.5rem 0.7rem;
+      cursor: pointer; font-size: 1.2rem;
+    }
+
+    @media (max-width: 900px) {
+      body { display: block; }
+      aside {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      aside.open { transform: translateX(0); }
+      main { margin-left: 0; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; }
+      .hamburger { display: flex; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="hamburger" onclick="toggleNav()" aria-label="Menu">☰</button>
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside id="sidebar">
+    <div class="nav-brand">
+      <!-- ── MODIFIE TON NOM ICI ── -->
+      <span class="tag">// Etudiant BTS SIO</span>
+      <h2>Joey Dillenseger</h2>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#hero"          class="nav-link"><span class="nav-num">00</span> Accueil</a></li>
+        <li><a href="#apropos"       class="nav-link"><span class="nav-num">01</span> À propos</a></li>
+        <li><a href="#scolaire"      class="nav-link"><span class="nav-num">02</span> Parcours scolaire</a></li>
+        <li><a href="#professionnel" class="nav-link"><span class="nav-num">03</span> Expériences</a></li>
+        <li><a href="#certifications"class="nav-link"><span class="nav-num">04</span> Certifications</a></li>
+        <li><a href="#veille"        class="nav-link"><span class="nav-num">05</span> Veille techno</a></li>
+        <li><a href="#contact"       class="nav-link"><span class="nav-num">06</span> Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-footer">
+      <span>&lt; Portfolio /&gt;</span>
+      SIO — 2026
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main>
+
+    <!-- ══ 00 — HERO ══ -->
+    <section id="hero">
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
+      <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span>Disponible pour un stage</div>
+        <!-- ── MODIFIE TON NOM ── -->
+        <h1 class="hero-name"><span class="grad">Joey Dillenseger</span></h1>
+        <!-- ── MODIFIE TON TITRE ── -->
+        <p class="hero-role">Étudiant BTS SIO — Option SISR</p>
+        <p class="hero-desc">
+          <!-- ── MODIFIE TA DESCRIPTION ── -->
+          Découvrez mon parcours scolaire et professionnel entièrement numérisé.
+          Parcourez mes compétences et ma progression pour mieux comprendre qui je suis aujourd'hui.
+        </p>
+        <div class="hero-chips">
+          <!-- ── MODIFIE TES SPÉCIALITÉS ── -->
+          <span class="chip">💻 Réseaux</span>
+          <span class="chip">🗄️ Switch / Routeur</span>
+          <span class="chip">🔧 SISR</span>
+          <span class="chip">📱 Étudiant</span>
+        </div>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-grad">Me contacter →</a>
+          <a href="#scolaire" class="btn btn-ghost">Mon parcours</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ 01 — À PROPOS ══ -->
+    <section id="apropos">
+      <span class="sec-num">// 01</span>
+      <h2 class="sec-title reveal">À propos <span>de moi</span></h2>
+
+      <div class="about-grid">
+        <div>
+          <div class="about-photo">
+            <!-- ── REMPLACE L'EMOJI PAR TA PHOTO :
+                 <img src="images/ma-photo.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px">
+            ── -->
+            👤
+          </div>
+        </div>
+        <div class="about-text">
+          <h3>Qui suis-je ?</h3>
+          <!-- ── MODIFIE TA PRÉSENTATION ── -->
+          <p>
+            Je suis <strong style="color:var(--text)">Joey Dillenseger</strong>, étudiant en BTS SIO Option SISR,
+            passionné par l'informatique et les technologies.
+            J'aime travailler en équipe et progresser petit à petit.
+          </p>
+          <p>
+            Curieux et passionné, je me tiens constamment à jour avec les nouvelles technologies.
+            Mon objectif : devenir technicien réseau et contribuer à des projets ambitieux.
+          </p>
+          <div class="about-tags">
+            <!-- ── MODIFIE TES TAGS ── -->
+            <span class="about-tag">💻 Technicien Réseau</span>
+            <span class="about-tag">🗄️ Switch / Routeur</span>
+            <span class="about-tag">🔧 SISR</span>
+            <span class="about-tag">📱 Étudiant</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ 02 — PARCOURS SCOLAIRE ══ -->
+    <section id="scolaire">
+      <span class="sec-num">// 02</span>
+      <h2 class="sec-title reveal">Parcours <span>scolaire</span></h2>
+
+      <div class="timeline">
+
+        <div class="tl-item reveal">
+          <!-- ── MODIFIE LES DATES ── -->
+          <div class="tl-date">2025 — 2026</div>
+          <div class="tl-card">
+            <h3>BTS SIO — Option SISR</h3>
+            <!-- ── MODIFIE LE LYCÉE ── -->
+            <div class="school">Lycée Dick Ukeiwe, Dumbéa</div>
+            <p>
+              Formation en infrastructure systèmes et réseaux : administration de serveurs,
+              configuration d'équipements réseau, cybersécurité et support utilisateur.
+              Projets en équipe et stages en entreprise.
+            </p>
+            <div class="tags">
+              <span class="tag-item">Réseau</span>
+              <span class="tag-item">Windows</span>
+              <span class="tag-item">Cybersécurité</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">2022 — 2024</div>
+          <div class="tl-card">
+            <h3>Baccalauréat technologique, STI2D : sciences et technologies de l'industrie et du développement durable</h3>
+            <div class="school">Lycée Apolinaire Anova, Paita</div>
+            <p>
+              Option Systèmes d’Information et Numérique (SIN).
+               <strong style="color:var(--c2)"></strong>
+            </p>
+            <div class="tags">
+              <span class="tag-item">Arduino</span>
+              <span class="tag-item">Code</span>
+              <span class="tag-item">Numérique</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── AJOUTE D'AUTRES FORMATIONS EN COPIANT UN BLOC tl-item ── -->
+
+      </div>
+    </section>
+
+    <!-- ══ 03 — EXPÉRIENCES ══ -->
+    <section id="professionnel">
+      <span class="sec-num">// 03</span>
+      <h2 class="sec-title reveal">Expériences <span>professionnelles</span></h2>
+
+      <!-- ── MODIFIE LE CHEMIN DE TON CV ── -->
+      <div class="exp-cv-btns reveal">
+        <a href="documents/mon-cv.pdf" target="_blank" class="btn-cv btn-cv-view">👁 Visualiser le CV</a>
+        <a href="documents/mon-cv.pdf" download         class="btn-cv btn-cv-dl">⬇ Télécharger le CV</a>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Oct. 2025 — Nov. 2025</div>
+          <div class="tl-card">
+            <h3>Newrest</h3>
+            <div class="school">Technicien Réseaux et Informatique — Stage en Entr</div>
+            <p>
+
+              Inventaire du matériel informatique · Mise à jour BIOS (PC Fixes)
+              · Installation de bornes d'accès Wifi · Configuration de réseaux Windows serveurs.
+            </p>
+            <div class="tags">
+              <span class="tag-item">Windows</span>
+              <span class="tag-item">Wifi</span>
+              <span class="tag-item">BIOS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Août 2023 — Sept. 2023 · Mars 2024 — Mars 2024</div>
+          <div class="tl-card">
+            <h3>RenewPc, Nouméa</h3>
+            <div class="school">Technicien Informatique — Stage en Entreprise</div>
+            <p>
+              Reconditionnement de PC Fixe et portable · Tri du matériel informatique
+              · Installation de Windows 10 et 11 · Installation de logiciels.
+            </p>
+            <div class="tags">
+              <span class="tag-item">Reconditionnement</span>
+              <span class="tag-item">Desktop</span>
+              <span class="tag-item">BIOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── AJOUTE D'AUTRES EXPÉRIENCES EN COPIANT UN BLOC tl-item ── -->
+
+      </div>
+    </section>
+
+    <!-- ══ 04 — CERTIFICATIONS ══ -->
+    <section id="certifications">
+      <span class="sec-num">// 04</span>
+      <h2 class="sec-title reveal">Certifications</h2>
+
+      <div class="cert-grid">
+
+        <div class="cert-card c-orange reveal">
+          <div class="cert-year">2025 / 2026</div>
+          <h3>PIX</h3>
+          <div class="cert-progress">566 Points PIX</div>
+          <p>Certification nationale validant les compétences numériques : sécurité des données, collaboration en ligne et usage responsable du numérique.</p>
+          <div class="tags">
+            <span class="tag-item">Sécurité des données</span>
+            <span class="tag-item">Culture Numérique</span>
+            <span class="tag-item">Certification Nationale</span>
+          </div>
+        </div>
+
+        <div class="cert-card c-blue reveal">
+          <div class="cert-year">2025 / 2026</div>
+          <h3>Cisco NetAcad — Support et sécurité des réseaux</h3>
+          <div class="cert-progress">Terminé</div>
+          <p>Modèle OSI, protocoles TCP/IP, adressage IP, configuration et dépannage d'équipements réseau.</p>
+          <div class="tags">
+            <span class="tag-item">Réseau</span>
+            <span class="tag-item">Cisco</span>
+          </div>
+        </div>
+
+        <div class="cert-card c-blue reveal">
+          <div class="cert-year">2025</div>
+          <h3>SecNum académie — ATTESTATION DE SUIVI</h3>
+          <div class="cert-progress">Terminé</div>
+          <p>L’équipe SecNumacadémie certifie que Joey DILLENSEGER a validé l’ensemble des quatre modules du MOOC et a obtenu les résultats requis aux différentes évaluations.</p>
+          <div class="tags">
+            <span class="tag-item">Réseau</span>
+            <span class="tag-item">Cisco</span>
+            <span class="tag-item">VLAN</span>
+          </div>
+        </div>
+
+      
+
+        <!-- ── AJOUTE D'AUTRES CERTIFICATIONS EN COPIANT UN BLOC cert-card ── -->
+
+      </div>
+    </section>
+
+    <!-- ══ 05 — VEILLE TECHNO ══ -->
+    <section id="veille">
+      <span class="sec-num">// 05</span>
+      <h2 class="sec-title reveal">Veille <span>technologique</span></h2>
+
+      <div class="veille-card reveal">
+        <span class="veille-theme">Thème de veille</span>
+        <!-- ── MODIFIE TON THÈME DE VEILLE ── -->
+        <h3>Cybersécurité & IA offensive</h3>
+        <p>
+          Une équipe de cybersécurité a utilisé l’IA Mythos d’Anthropic pour contourner une protection avancée du processeur Apple M5 en seulement <strong style="color:var(--text)">cinq jours</strong>, Cette démonstration montre que les IA deviennent capables d’aider à découvrir rapidement des failles critiques, renforçant l’importance de la cybersécurité et des protections matérielles modernes.
+        </p>
+        <!-- ── MODIFIE TES SOURCES ── -->
+        <div class="veille-sources">
+          📰 Sources suivies : <strong>Korben</strong>, Mythos — mise à jour mensuelle.
+        </div>
+        <div class="tags">
+          <span class="tag-item">Anthropic</span>
+          <span class="tag-item">Korben</span>
+          <span class="tag-item">Exploit</span>
+          <span class="tag-item">kernel exploit</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ 06 — CONTACT ══ -->
+    <section id="contact">
+      <span class="sec-num">// 06</span>
+      <h2 class="sec-title reveal">Me <span>contacter</span></h2>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>N'hésite pas à me contacter !</h3>
+          <p>
+            Disponible pour des stages ou des opportunités d'embauche.
+            N'hésite pas à me contacter, je répondrai avec plaisir.
+          </p>
+          <div class="contact-links">
+            <!-- ── MODIFIE TES COORDONNÉES ── -->
+            <a href="mailto:dillensegerjoey@email.com" class="contact-link">
+              <span class="ico ico-mail">✉️</span>
+              dillensegerjoey@email.com
+            </a>
+            <a href="https://linkedin.com/in/ton-profil" target="_blank" class="contact-link">
+              <span class="ico ico-li">🔗</span>
+              LinkedIn — Ton Nom
+            </a>
+            <a href="https://github.com/ton-profil" target="_blank" class="contact-link">
+              <span class="ico ico-gh">🐙</span>
+              GitHub — ton-profil
+            </a>
+            <a href="tel:+687897451" class="contact-link">
+              <span class="ico ico-phone">📞</span>
+              +687 89.74.51
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal">
+          <h4>Envoie-moi un message</h4>
+          <form onsubmit="sendMsg(event)">
+            <div class="form-group">
+              <label>Nom</label>
+              <input type="text" placeholder="Ton nom" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="dillensegerjoey@email.com" required />
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Ton message..."></textarea>
+            </div>
+            <button type="submit" class="btn-send">Envoyer le message 🚀</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+      <!-- ── MODIFIE TON NOM ── -->
+      <span class="footer-brand">&lt; Portfolio J
+       /&gt;</span>
+      <span>SIO_VyBZz — 2026</span>
+    </footer>
+
+  </main>
+
+  <script>
+    /* ── Scroll Reveal ── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ── Active nav link ── */
+    const sections = document.querySelectorAll('section[id]');
+    const links    = document.querySelectorAll('.nav-link');
+    const navIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => navIO.observe(s));
+
+    /* ── Mobile nav ── */
+    function toggleNav() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+    document.querySelectorAll('.nav-link').forEach(l => {
+      l.addEventListener('click', () => {
+        document.getElementById('sidebar').classList.remove('open');
+      });
+    });
+
+    /* ── Form ── */
+    function sendMsg(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-send');
+      btn.textContent = '✅ Message envoyé !';
+      btn.style.background = 'linear-gradient(135deg, #33FFB8, #3380FF)';
+      setTimeout(() => {
+        btn.textContent = 'Envoyer le message 🚀';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
