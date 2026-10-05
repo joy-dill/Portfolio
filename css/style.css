@@ -315,6 +315,22 @@ section {
   color: var(--c1);
 }
 .tl-missions strong { color: var(--text); font-weight: 500; }
+
+.sec-subtitle {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  font-weight: 800; line-height: 1.2;
+  margin: 4rem 0 0.8rem;
+}
+.sec-subtitle span {
+  background: linear-gradient(90deg, var(--c3), var(--c4));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.sec-intro {
+  color: var(--muted); line-height: 1.8; font-size: 0.95rem;
+  max-width: 680px; margin-bottom: 2rem;
+}
+.cert-card .tl-missions { font-size: 0.85rem; line-height: 1.65; }
 .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .tag-item {
   padding: 0.2rem 0.7rem; border-radius: 100px;
@@ -556,3 +572,4 @@ footer .footer-brand {
   footer { padding: 1.5rem; }
   .hamburger { display: flex; align-items: center; }
 }
+.cert-grid.grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); }
