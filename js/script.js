@@ -66,7 +66,7 @@ async function sendMsg(e) {
 
     btn.textContent = '✅ Message envoyé !';
     btn.style.background = 'linear-gradient(135deg, #33FFB8, #3380FF)';
-    status.textContent = 'Merci, votre message a bien été envoyé. Je vous répondrai rapidement.';
+    status.textContent = 'Merci, votre message a bien été envoyé. Je vous répondrai dans les plus brefs délais.';
     status.classList.add('ok');
     form.reset();
   } catch (err) {
