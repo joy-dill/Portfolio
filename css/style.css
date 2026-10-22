@@ -573,3 +573,18 @@ footer .footer-brand {
   .hamburger { display: flex; align-items: center; }
 }
 .cert-grid.grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); }
+
+/* Bouton « Voir le certificat » aligné en bas des cartes */
+.cert-card { display: flex; flex-direction: column; }
+.cert-card:has(.btn-cert) .tags { margin-bottom: 1.2rem; }
+.btn-cert {
+  margin-top: auto; align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0.5rem 1rem; border-radius: 10px;
+  font-size: 0.8rem; font-weight: 600; text-decoration: none;
+  background: rgba(51,128,255,0.15);
+  border: 1px solid rgba(51,128,255,0.3);
+  color: var(--c3);
+  transition: transform 0.2s, background 0.2s;
+}
+.btn-cert:hover { transform: translateY(-2px); background: rgba(51,128,255,0.25); }
