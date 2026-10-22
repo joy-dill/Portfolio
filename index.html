@@ -461,7 +461,10 @@
               <label for="f-msg">Message</label>
               <textarea id="f-msg" placeholder="Votre message..." required></textarea>
             </div>
+            <!-- Piège anti-spam (invisible pour les visiteurs) -->
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" />
             <button type="submit" class="btn-send">Envoyer le message 🚀</button>
+            <p id="f-status" class="form-status" role="status"></p>
           </form>
         </div>
       </div>

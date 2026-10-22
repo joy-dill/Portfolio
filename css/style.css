@@ -588,3 +588,10 @@ footer .footer-brand {
   transition: transform 0.2s, background 0.2s;
 }
 .btn-cert:hover { transform: translateY(-2px); background: rgba(51,128,255,0.25); }
+
+/* Formulaire de contact : état d'envoi */
+.btn-send:disabled { opacity: 0.6; cursor: wait; transform: none; }
+.form-status { margin-top: 0.9rem; font-size: 0.88rem; line-height: 1.6; min-height: 1.4em; }
+.form-status.ok  { color: var(--c4); }
+.form-status.err { color: var(--c1); }
+.form-status a   { color: var(--c2); }

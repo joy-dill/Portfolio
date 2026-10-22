@@ -30,24 +30,54 @@ document.querySelectorAll('.nav-link').forEach(l => {
   });
 });
 
-/* ── Form : ouvre la messagerie du visiteur avec le message pré-rempli ── */
-const CONTACT_EMAIL = 'dillensegerjoey@gmail.com';
+/* ── Form : envoi direct par Web3Forms (le message arrive dans la boîte Gmail) ── */
+const CONTACT_EMAIL   = 'dillensegerjoey@gmail.com';
+const WEB3FORMS_KEY   = '0ada8704-04c5-423e-a15a-f6083e0183e0';
+const BTN_LABEL       = 'Envoyer le message 🚀';
 
-function sendMsg(e) {
+async function sendMsg(e) {
   e.preventDefault();
-  const nom   = document.getElementById('f-nom').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const msg   = document.getElementById('f-msg').value.trim();
-  const sujet = `Contact portfolio — ${nom}`;
-  const corps = `${msg}\n\n${nom} (${email})`;
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
+  const form   = e.target;
+  const btn    = form.querySelector('.btn-send');
+  const status = document.getElementById('f-status');
+  const nom    = document.getElementById('f-nom').value.trim();
 
-  const btn = e.target.querySelector('.btn-send');
-  btn.textContent = '✅ Messagerie ouverte !';
-  btn.style.background = 'linear-gradient(135deg, #33FFB8, #3380FF)';
-  setTimeout(() => {
-    btn.textContent = 'Envoyer le message 🚀';
-    btn.style.background = '';
-    e.target.reset();
-  }, 3000);
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+  status.textContent = '';
+  status.className = 'form-status';
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject:    `Contact portfolio — ${nom}`,
+        from_name:  'Portfolio Joey Dillenseger',
+        name:       nom,
+        email:      document.getElementById('f-email').value.trim(),
+        message:    document.getElementById('f-msg').value.trim(),
+        botcheck:   form.querySelector('[name="botcheck"]').checked
+      })
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || res.status);
+
+    btn.textContent = '✅ Message envoyé !';
+    btn.style.background = 'linear-gradient(135deg, #33FFB8, #3380FF)';
+    status.textContent = 'Merci, votre message a bien été envoyé. Je vous répondrai rapidement.';
+    status.classList.add('ok');
+    form.reset();
+  } catch (err) {
+    btn.textContent = BTN_LABEL;
+    status.innerHTML = `Le message n'a pas pu être envoyé. Vous pouvez m'écrire directement à <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.`;
+    status.classList.add('err');
+  } finally {
+    btn.disabled = false;
+    setTimeout(() => {
+      btn.textContent = BTN_LABEL;
+      btn.style.background = '';
+    }, 4000);
+  }
 }
