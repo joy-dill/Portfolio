@@ -132,6 +132,7 @@ section {
   background:
     radial-gradient(ellipse 55% 55% at 85% 15%, rgba(51,128,255,0.15) 0%, transparent 65%),
     radial-gradient(ellipse 45% 45% at 15% 85%, rgba(255,87,51,0.13) 0%, transparent 65%);
+  background-color: var(--dark2);
   overflow: hidden;
 }
 
@@ -263,7 +264,7 @@ section {
 /* ══════════════════════════════
    03 — PARCOURS SCOLAIRE
 ══════════════════════════════ */
-#scolaire { background: var(--dark); }
+#scolaire { background: var(--dark2); }
 
 .timeline { position: relative; padding-left: 2rem; }
 .timeline::before {
@@ -283,7 +284,7 @@ section {
   position: absolute; left: -2rem; top: 8px;
   width: 12px; height: 12px; border-radius: 50%;
   background: var(--c1);
-  border: 2px solid var(--dark);
+  border: 2px solid var(--dark2);
   box-shadow: 0 0 10px rgba(255,87,51,0.5);
 }
 .tl-date {
@@ -367,7 +368,7 @@ section {
 /* ══════════════════════════════
    05 — CERTIFICATIONS
 ══════════════════════════════ */
-#certifications { background: var(--dark); }
+#certifications { background: var(--dark2); }
 
 .cert-grid {
   display: grid;
@@ -446,7 +447,7 @@ section {
 /* ══════════════════════════════
    07 — CONTACT
 ══════════════════════════════ */
-#contact { background: var(--dark); }
+#contact { background: var(--dark2); }
 
 .contact-grid {
   display: grid;
@@ -600,7 +601,7 @@ footer .footer-brand {
    04 — PROJETS & RÉALISATIONS
 ══════════════════════════════ */
 #projets { background: var(--dark2); }
-#competences { background: var(--dark); }
+#competences { background: var(--dark2); }
 .sec-subtitle.first { margin-top: 1rem; }
 
 .proj-head { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 0.3rem; }
