@@ -48,7 +48,7 @@ aside {
 }
 .nav-brand h2 {
   font-family: 'Syne', sans-serif;
-  font-size: 1.25rem; font-weight: 800;
+  font-size: 1.25rem; font-weight: 700;
   background: linear-gradient(135deg, var(--c1), var(--c2));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   line-height: 1.2;
@@ -116,7 +116,7 @@ section {
 .sec-title {
   font-family: 'Syne', sans-serif;
   font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 800; line-height: 1.1;
+  font-weight: 700; line-height: 1.1;
   margin-bottom: 1.5rem;
 }
 .sec-title span {
@@ -157,7 +157,7 @@ section {
 .hero-name {
   font-family: 'Syne', sans-serif;
   font-size: clamp(2.8rem, 6vw, 5rem);
-  font-weight: 800; line-height: 1.05;
+  font-weight: 700; line-height: 1.05;
   margin-bottom: 0.6rem;
 }
 .hero-name .grad {
@@ -320,7 +320,7 @@ section {
 .sec-subtitle {
   font-family: 'Syne', sans-serif;
   font-size: clamp(1.4rem, 2.4vw, 1.8rem);
-  font-weight: 800; line-height: 1.2;
+  font-weight: 700; line-height: 1.2;
   margin: 4rem 0 0.8rem;
 }
 .sec-subtitle span {
@@ -534,7 +534,7 @@ footer {
   flex-wrap: wrap; gap: 0.8rem;
 }
 footer .footer-brand {
-  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-family: 'Syne', sans-serif; font-weight: 700;
   background: linear-gradient(90deg, var(--c1), var(--c2));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
@@ -606,7 +606,7 @@ footer .footer-brand {
 
 .proj-head { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 0.3rem; }
 .proj-num {
-  font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800;
+  font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700;
   background: linear-gradient(90deg, var(--c1), var(--c2));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
@@ -658,7 +658,7 @@ button.btn-cert { font-family: 'DM Sans', sans-serif; cursor: pointer; }
 }
 .proj-modal::backdrop { background: rgba(5,5,10,0.72); backdrop-filter: blur(4px); }
 .proj-modal h3 {
-  font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 800;
+  font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 700;
   line-height: 1.25; margin-bottom: 0.7rem; padding-right: 2rem;
 }
 .proj-modal p { color: var(--muted); line-height: 1.7; font-size: 0.93rem; }
