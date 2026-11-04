@@ -694,3 +694,27 @@ body.modal-open { overflow: hidden; }
   .synth-row { grid-template-columns: 1fr; gap: 0.4rem; }
 }
 .proj-modal { color-scheme: dark; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
+
+/* ── À propos : chiffres clés et cartes ── */
+.about-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+  margin: 2.5rem 0 1.2rem;
+}
+.stat {
+  display: flex; flex-direction: column; gap: 0.3rem;
+  padding: 1.3rem 1.4rem; border-radius: 16px; text-decoration: none;
+  background: var(--dark3); border: 1px solid var(--border);
+  transition: transform 0.2s, border-color 0.2s;
+}
+.stat:hover { transform: translateY(-3px); border-color: rgba(255,87,51,0.3); }
+.stat-num {
+  font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 700; line-height: 1;
+  background: linear-gradient(90deg, var(--c1), var(--c2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.stat-label { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+.about-cards .cert-card h3 { margin-bottom: 0.8rem; }
+
+@media (max-width: 900px) {
+  .about-stats { grid-template-columns: repeat(2, 1fr); }
+}
